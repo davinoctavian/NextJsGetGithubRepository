@@ -1,16 +1,18 @@
 'use client'
 import { Inter } from 'next/font/google'
 import styles from './dashboard.module.css'
-import { useUsernameContext } from '../context/username'
 import { use, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../../store/index'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Dashboard() {
   const router = useRouter()
-  const { username, setUsername} = useUsernameContext()
   const [ data, setData ] = useState([])
+  const arrUser = useSelector(selectUser)
+  const username = arrUser?.username ?? ''
 
   useEffect(() =>{
     if (username == '') return

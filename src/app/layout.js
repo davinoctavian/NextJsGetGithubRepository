@@ -1,5 +1,5 @@
 import './globals.css'
-import { UsernameContextProvider } from './context/username'
+import { Wrappage } from './wrappage'
 
 export const metadata = {
   title: 'Get Github Repository',
@@ -10,9 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <UsernameContextProvider>
-          {children}
-        </UsernameContextProvider>
+        <Wrappage>{children}</Wrappage>
       </body>
     </html>
   )

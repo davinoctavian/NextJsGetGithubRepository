@@ -3,18 +3,19 @@
 import { Inter } from 'next/font/google'
 import { useState } from 'react'
 import styles from './page.module.css'
-import { useUsernameContext } from './context/username'
 import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { addUsername } from '../../store/index'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const dispatch = useDispatch()
   const router = useRouter()
   const [name, setName] = useState('')
-  const { username, setUsername} = useUsernameContext()
 
   const handleSubmit = () => {
-    setUsername(name)
+    dispatch(addUsername(name))
     localStorage.setItem("username", name);
     router.push('/dashboard')
   }
